@@ -5,3 +5,7 @@
 ## run commands
  - npm run dev
  - npm run start
+
+## Installing express
+
+- npm i express
