@@ -1,4 +1,5 @@
 const express = require('express');
+const faker = require('faker');
 
 const app = express();
 const port = 3000;
@@ -13,25 +14,27 @@ app.get('/',(req,res) => {
   res.send('Mi primer servido con Node.js y Platzi!!  :)')
 });
 
-
+//Parámetros GET
 
 app.get('/products', (req,res) => {
-  res.json([
-    {
+  const products = [];
+  const {size} = req.query;
+  const limit= size || 10;
 
-      product_name: 'Zapatillas Nike Air force one',
-      price: 120,
-      color: 'white and blue',
-      size: 7.5
-    },
-    {
+  for (let index = 0; index < limit; index++) {
+    products.push({
+      name: faker.commerce.productName(),
+      price: parseInt(faker.commerce.price(), 10),
+      image: faker.image.imageUrl()
+    });
 
-      product_name: 'Zapatillas Adidas',
-      price: 100,
-      color: 'black',
-      size: 8
-    }
-  ]);
+  }
+  res.json(products);
+});
+
+//las rutas especificas deben declararse antes de las rutas con parámetros para evitar que choquen entre sí
+app.get('/products/filter', (req,res) => {
+  res.send('Soy una ruta especifica, no un parámetro')
 });
 
 app.get('/products/:id', (req,res) => {
@@ -121,7 +124,7 @@ app.get('/orders/:id',(req,res) => {
 
 
 
-
+//multiples parámetros
 app.get('/categories/:categoryId/products/:productId', (req,res) => {
   const {categoryId,productId} = req.params;
   res.json({
@@ -130,4 +133,17 @@ app.get('/categories/:categoryId/products/:productId', (req,res) => {
   });
 });
 
+// Query params
 
+app.get('/people', (req, res) => {
+  const {limit, offset} = req.query;
+
+  if(limit && offset){
+    res.json({
+      limit,
+      offset
+    });
+  }else{
+    res.send('No has enviado parámetros')
+  }
+});

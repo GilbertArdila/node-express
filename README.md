@@ -7,8 +7,13 @@
  - npm run start
 
 ## Installing express
-
 - npm i express
+
+
+## Installing faker
+- npm i faker
+
+
 
 ### RESTful API
  
