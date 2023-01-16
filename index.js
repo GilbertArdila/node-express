@@ -25,3 +25,12 @@ app.listen(port, () => {
   console.log(`http://${IP}:${port}/`);
 });
 
+// RESTful API
+// GET-POST-PUT/PATCH-DELETE
+
+//Method     /products      /products/{id}
+//GET        Get a list      Get one product
+//PUT         xxxxxxx        Update or replace a product
+//PATCH       xxxxxxx        Update a product
+//POST      Create a product  xxxxxxxx
+//DELETE      xxxxxxx        Delete a product
