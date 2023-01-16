@@ -11,7 +11,7 @@
 
 
 ## Installing faker
-- npm i faker
+- npm i faker@5.5.3 -S
 
 
 
