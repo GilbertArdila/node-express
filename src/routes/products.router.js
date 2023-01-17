@@ -28,7 +28,12 @@ router.get('/filter', (req,res) => {
 
 router.get('/:id', (req,res) => {
   const {id} = req.params;
-  res.json(
+  if(id === '999'){
+    res.status(404).json({
+      message:'404 Not found'
+    });
+  }else{
+    res.status(200).json(
     {
       id,
       product_name: 'Zapatillas Adidas',
@@ -37,11 +42,13 @@ router.get('/:id', (req,res) => {
       size: 8
     }
   );
+  }
+
 });
 
 router.post('/', (req, res) => {
   const body = req.body;
-  res.json({
+  res.status(201).json({
     message: 'created',
     data: body
   });
@@ -50,8 +57,8 @@ router.post('/', (req, res) => {
 router.patch('/:id', (req,res) => {
   const {id} = req.params;
   const body = req.body;
-  res.json({
-    message:'updated',
+  res.status(200).json({
+    message:'ok',
     data:body,
     id
   });
@@ -61,8 +68,8 @@ router.patch('/:id', (req,res) => {
 router.put('/:id', (req,res) => {
   const {id} = req.params;
   const body = req.body;
-  res.json({
-    message:'updated',
+  res.status(201).json({
+    message:'created',
     data:body,
     id
   });
@@ -71,8 +78,8 @@ router.put('/:id', (req,res) => {
 
 router.delete('/:id', (req,res) => {
   const {id} = req.params;
-  res.json({
-    message:'deleted',
+  res.status(202).json({
+    message:'acepted',
     id
   });
 });
