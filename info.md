@@ -36,3 +36,12 @@
 
 
 //DELETE      xxxxxxx        Delete a product
+
+
+### the clean architecture
+
+- Entities
+- Use cases
+- Controllers
+- Services
+- Libs
