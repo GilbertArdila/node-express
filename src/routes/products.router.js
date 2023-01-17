@@ -1,8 +1,8 @@
 const express = require('express');
-const ProductService = require('../services/product.service');
+const ProductsService = require('../services/product.service');
 
 const router = express.Router();
-const service = new ProductService();
+const service = new ProductsService();
 
 router.get('/', (req,res) => {
 const products = service.find();
@@ -17,53 +17,42 @@ router.get('/filter', (req,res) => {
 router.get('/:id', (req,res) => {
   const {id} = req.params;
   const product = service.findOne(id);
-  if(product === null){
+  if(product === undefined){
     res.status(404).json({
-      message:'404 Not found'
-    })
+      message:'Product not found, please check your id'
+    });
   }else{
     res.status(200).json(product);
-  };
-
+  }
 
 });
 
 router.post('/', (req, res) => {
   const body = req.body;
-  res.status(201).json({
-    message: 'created',
-    data: body
-  });
+  const newProduct = service.create(body)
+  res.status(201).json(newProduct);
 });
 
 router.patch('/:id', (req,res) => {
   const {id} = req.params;
   const body = req.body;
-  res.status(200).json({
-    message:'ok',
-    data:body,
-    id
-  });
+  const product = service.update(id,body);
+  res.status(200).json(product);
 });
 
 
 router.put('/:id', (req,res) => {
   const {id} = req.params;
   const body = req.body;
-  res.status(201).json({
-    message:'created',
-    data:body,
-    id
-  });
+  const product = service.update(id,body);
+  res.status(201).json(product);
 });
 
 
 router.delete('/:id', (req,res) => {
   const {id} = req.params;
-  res.status(202).json({
-    message:'acepted',
-    id
-  });
+  const response = service.delete(id);
+  res.status(202).json(response);
 });
 
 
