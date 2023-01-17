@@ -1,10 +1,10 @@
 const express = require('express');
-const routerApi = require('./routes');
+const routerApi = require('./src/routes');
 
 const app = express();
 const port = 3000;
-
-
+app.use(express.json());
+routerApi(app);
 
 
 
@@ -15,13 +15,6 @@ app.listen(port, () => {
 app.get('/',(req,res) => {
   res.send('Mi primer servido con Node.js y Platzi!!  :)')
 });
-routerApi(app);
-
-//Parámetros GET
-
-
-
-
 
 
 
