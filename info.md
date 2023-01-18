@@ -16,6 +16,9 @@
 ## Installing Boom
 - npm i @hapi/boom
 
+## Installing Joi
+- npm i joi
+
 
 
 ### RESTful API
