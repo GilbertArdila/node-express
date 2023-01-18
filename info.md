@@ -13,6 +13,9 @@
 ## Installing faker
 - npm i faker@5.5.3 -S
 
+## Installing Boom
+- npm i @hapi/boom
+
 
 
 ### RESTful API
