@@ -25,12 +25,20 @@ class ProductsService {
   };
 
   async create(data){
-    const newProduct = {
+    if(Object.keys(data).length === 0){
+      throw new Error('Los datos del producto no pueden estar vacíos')
+    }else{
+       const newProduct = {
       id:faker.datatype.uuid(),
       ...data
     };
     this.products.push(newProduct);
     return newProduct;
+    }
+
+
+
+
 
   };
 
@@ -39,7 +47,12 @@ class ProductsService {
   };
 
   async findOne(id){
-   return this.products.find(item => item.id === id);
+  const product =this.products.find(item => item.id === id);
+  if(product=== undefined){
+    throw new Error('Please check your id, product not found')
+  }else{
+    return product
+  }
   };
 
   async update(id,newData){
@@ -60,7 +73,7 @@ class ProductsService {
   async delete(id){
     const index = this.products.findIndex(item => item.id === id);
     if(index === -1){
-      throw new Error('Product not found, please check your id')
+      throw new Error('Product not found, your id must be wrong')
     }else{
       this.products.splice(index,1);
       return {id}
