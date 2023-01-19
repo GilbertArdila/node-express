@@ -19,6 +19,10 @@
 ## Installing Joi
 - npm i joi
 
+## Installing cors
+- npm i cors
+
+
 
 
 ### RESTful API
