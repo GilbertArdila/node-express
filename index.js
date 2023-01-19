@@ -26,7 +26,7 @@ app.use(cors(options));
 
 
 app.listen(port, () => {
-  console.log(`${port}`);
+  console.log(`using the port: ${port}`);
 });
 
 app.get('/',(req,res) => {
