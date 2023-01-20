@@ -1,6 +1,6 @@
 # Installing dependencies
 
-- npm i nodemon eslint eslint-config-prettier eslint-plugin-prettier pritter -D
+- npm i nodemon eslint eslint-config-prettier eslint-plugin-prettier prettier -D
 
 ## run commands
  - npm run dev
@@ -55,3 +55,12 @@
 - Controllers
 - Services
 - Libs
+
+### file's creation order
+
+- schemas
+- middlewares
+- services
+- routes
+- index (routes)
+- index (main app)
