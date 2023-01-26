@@ -6,6 +6,13 @@
  - npm run dev
  - npm run start
 
+## run commands to up the docker service
+- first you must open docker desktop
+- docker-compose up -d postgres  to up the service
+- docker-compose ps  to inspect what services are running
+- docker-compose down to down the services
+
+
 ## Installing express
 - npm i express
 
@@ -57,7 +64,7 @@
 - Libs
 
 ### file's creation order
-
+- docker-compose
 - schemas
 - middlewares
 - services
