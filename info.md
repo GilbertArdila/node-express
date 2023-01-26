@@ -43,6 +43,13 @@
 ## Installing dotenv
 - npm i dotenv
 
+## Installing sequelize
+- npm i --save sequelize
+- npm install --save pg-hstore  #postgres
+                     mysql2      #MySQL
+                     mariadb     #MariaDB  
+-                        
+
 
 
 
@@ -81,6 +88,7 @@
 - docker-compose
 - config/config.js
 - env/en.example
+- libs/sequelize
 - schemas
 - middlewares
 - services
