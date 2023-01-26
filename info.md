@@ -9,8 +9,16 @@
 ## run commands to up the docker service
 - first you must open docker desktop
 - docker-compose up -d postgres  to up the service
+- docker-compose up -d pgadmin 
 - docker-compose ps  to inspect what services are running
 - docker-compose down to down the services
+- docker-compose exec postgres bash   open bash console
+- docker ps to check the container's id
+-  docker inspect id to see the ip adress
+- psql -h localhost -d dbName -U usuario
+- \d+ to see the db infracstructure
+- \q to exit db
+- exit to leave the container
 
 
 ## Installing express
@@ -28,6 +36,9 @@
 
 ## Installing cors
 - npm i cors
+
+## Installing node-postgres
+- npm i pg
 
 
 
