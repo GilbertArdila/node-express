@@ -40,6 +40,9 @@
 ## Installing node-postgres
 - npm i pg
 
+## Installing dotenv
+- npm i dotenv
+
 
 
 
@@ -76,6 +79,8 @@
 
 ### file's creation order
 - docker-compose
+- config/config.js
+- env/en.example
 - schemas
 - middlewares
 - services
