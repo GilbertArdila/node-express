@@ -17,7 +17,10 @@ class CategoryService {
   }
 
   async findOne(id) {
-    const category = await models.Category.findByPk(id);
+    //nos retorna los productos de esa categoria, usamos el alias de la asociación en category.model
+    const category = await models.Category.findByPk(id,{
+      include:['products']
+    });
     if(!category){
       throw boom.notFound('category not found, please check the id');
     }

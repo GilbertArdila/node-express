@@ -18,6 +18,8 @@ function setupModels(sequelize){
  //ejecutamos las asociaciones y enviamos los modelos
  Customer.associate(sequelize.models);
  User.associate(sequelize.models);
+ Category.associate(sequelize.models);
+ Product.associate(sequelize.models);
 };
 
 module.exports = setupModels;

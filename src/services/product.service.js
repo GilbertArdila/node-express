@@ -10,7 +10,10 @@ class ProductService {
   }
 
   async find() {
-    const products = await models.Product.findAll();
+        //retornamos la categoria del producto usando el alias de la asociación del product.model
+    const products = await models.Product.findAll({
+      include: ['category']
+    });
 
     return products;
 

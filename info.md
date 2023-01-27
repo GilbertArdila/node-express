@@ -122,3 +122,8 @@
 
   - hasOne the b table has the relationship 
   - belongsTo a table has the relationship example in customer.model 
+
+ ### one to many
+
+
+ - hasMany one category could has many products

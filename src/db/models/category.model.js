@@ -12,6 +12,8 @@ const CategorySchema = {
   name:{
     allowNull: false,
     type: DataTypes.STRING,
+    //no pueden haber dos categorias con el mismo nombre
+    unique: true
 
   },
   image:{
@@ -27,7 +29,13 @@ const CategorySchema = {
 };
 
 class Category extends Model{
-  static associate(){
+  static associate(models){
+    //una categoria tiene muchos productos
+    this.hasMany(models.Product,{
+      as:'products',
+      //la FK de product.model
+      foreignKey:'categoryId'
+    })
 
   }
 
