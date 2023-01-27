@@ -1,7 +1,3 @@
-# Installing dependencies
-
-- npm i nodemon eslint eslint-config-prettier eslint-plugin-prettier prettier -D
-
 ## run commands
  - npm run dev
  - npm run start
@@ -25,44 +21,6 @@
 - \d+ to see the db infracstructure
 - \q to exit db
 - exit to leave the container
-
-
-## Installing express
-- npm i express
-
-
-## Installing faker
-- npm i faker@5.5.3 -S
-
-## Installing Boom
-- npm i @hapi/boom
-
-## Installing Joi
-- npm i joi
-
-## Installing cors
-- npm i cors
-
-## Installing node-postgres
-- npm i pg
-
-## Installing dotenv
-- npm i dotenv
-
-## Installing sequelize
-- npm i --save sequelize
-- npm install --save pg-hstore  #postgres
-                     mysql2      #MySQL
-                     mariadb     #MariaDB  
-                        
-
-
-## Instaling MySQL 
-- npm i --save mysql2   to change db
-
-## Instaling sequelize cli 
-- npm install sequelize-cli  --save-dev  to do migrations
-
 
 
 ### RESTful API
@@ -96,6 +54,8 @@
 - Services
 - Libs
 
+
+
 ### file's creation order
 - docker-compose
 - config/config.js
@@ -114,6 +74,7 @@
 - index (routes)
 - index (main app)
 
+
 ### according to db relationships
 
 
@@ -127,3 +88,7 @@
 
 
  - hasMany one category could has many products
+
+ ### many to many
+
+ - belongsToMany one order has many products and one product could be in many orders
