@@ -14,6 +14,10 @@ function setupModels(sequelize){
   Customer.init(CustomerSchema, Customer.config(sequelize))
  // Order.init(OrderSchema, Order.config(sequelize))
  Product.init(ProductSchema, Product.config(sequelize))
+
+ //ejecutamos las asociaciones y enviamos los modelos
+ Customer.associate(sequelize.models);
+ User.associate(sequelize.models);
 };
 
 module.exports = setupModels;

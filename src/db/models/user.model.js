@@ -33,7 +33,13 @@ const UserSchema = {
 };
 
 class User extends Model{
-  static associate(){
+  static associate(models){
+    //el usuario pertenece a un cliente o tiene un cliente
+    this.hasOne(models.Customer,{
+      as: 'customer',
+      //la FK que declaramos en customer.model
+      foreignKey: 'userId'
+    })
 
   }
 

@@ -10,7 +10,10 @@ class UserService {
   }
 
   async find() {
-    const clients = await models.User.findAll();
+    //usamos el alias que le dimos en user.model 'customer' para mostrar los datos anidados
+    const clients = await models.User.findAll({
+      include: ['customer']
+    });
     // const client = await getConnection();
     // const response = await client.query('SELECT * FROM task');
     // return response.rows;

@@ -121,4 +121,4 @@
 
 
   - hasOne the b table has the relationship 
-  - belongsTo a table has the relationship 
+  - belongsTo a table has the relationship example in customer.model 

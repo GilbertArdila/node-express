@@ -16,6 +16,7 @@ const createCustomerSchema = Joi.object({
   name: name.required(),
   lastName: lastName.required(),
   phone: phone.required(),
+  //creamos un objeto del usuario para crearlo en el mismo endpoint
   user: Joi.object({
   email: email.required(),
   password: password.required()

@@ -5,12 +5,18 @@ class CustomerService {
   constructor() {}
 
   async create(data) {
-    const newCustomer = await models.Customer.create(data)
+    //creamos el usuario en el mismo endpoint del customer usando la asociación y el alias del customer.model
+    const newCustomer = await models.Customer.create(data,{
+     include:['user']
+    })
     return newCustomer;
   }
 
   async find() {
-    const customers = await models.Customer.findAll();
+    //usamos el alias user de user.model para anidar la asociación entre tablas
+    const customers = await models.Customer.findAll({
+      include:['user']
+    });
     return customers;
 
   }

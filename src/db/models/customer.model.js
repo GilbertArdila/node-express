@@ -1,5 +1,5 @@
 const {Model, DataTypes, Sequelize} = require('sequelize');
-
+const {USER_TABLE} = require('./user.model')
 
 const CUSTOMER_TABLE = 'Customers';
 const CustomerSchema = {
@@ -8,16 +8,6 @@ const CustomerSchema = {
     autoIncrement: true,
     primaryKey: true,
     type: DataTypes.INTEGER
-  },
-  email:{
-    allowNull: false,
-    type: DataTypes.STRING,
-    //no puede haber más de un usuario con el mismo email
-    unique: true
-  },
-  password:{
-    allowNull: false,
-    type: DataTypes.STRING
   },
   name:{
     allowNull: false,
@@ -36,7 +26,16 @@ const CustomerSchema = {
   userId:{
     field: 'user_id',
     allowNull: false,
-    type: DataTypes.INTEGER
+    type: DataTypes.INTEGER,
+    //no puede haber dos clientes con un mismo id de usuario
+    unique: true,
+    references: {
+      //se refiere a qué tabla se hace la relación y su primary key
+     model: USER_TABLE,
+     key: 'id'
+    },
+    onUpdate: 'CASCADE',
+    onDelete: 'SET NULL'
   },
   createdAt:{
     allowNull: false,
@@ -47,7 +46,10 @@ const CustomerSchema = {
 };
 
 class Customer extends Model{
-  static associate(){
+  static associate(models){
+    //uno a uno el customer tiene un user
+    //la FK debería estar en esta tabla
+    this.belongsTo(models.User,{as:'user'});
 
   }
 
