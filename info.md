@@ -113,3 +113,12 @@
 - routes
 - index (routes)
 - index (main app)
+
+### according to db relationships
+
+
+ #### one to one
+
+
+  - hasOne the b table has the relationship 
+  - belongsTo a table has the relationship 

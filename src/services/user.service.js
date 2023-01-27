@@ -1,5 +1,4 @@
 const boom = require('@hapi/boom');
-const getConnection = require('../libs/postgres');
 const {models} = require('./../libs/sequelize');
 
 class UserService {
@@ -29,7 +28,7 @@ class UserService {
 
   async update(id, changes) {
     const user = this.findOne(id);
-    const response = awaituser.update(changes)
+    const response = await user.update(changes)
     return response
 
   }
