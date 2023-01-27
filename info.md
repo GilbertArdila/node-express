@@ -9,7 +9,9 @@
 ## run commands to up the docker service
 - first you must open docker desktop
 - docker-compose up -d postgres  to up the service
-- docker-compose up -d pgadmin 
+- docker-compose up -d mysql
+- docker-compose up -d pgadmin
+- docker-compose up -d phpmyadmin 
 - docker-compose ps  to inspect what services are running
 - docker-compose down to down the services
 - docker-compose exec postgres bash   open bash console
@@ -48,8 +50,11 @@
 - npm install --save pg-hstore  #postgres
                      mysql2      #MySQL
                      mariadb     #MariaDB  
--                        
+                        
 
+
+## Instaling MySQL 
+- npm i --save mysql2   to change db
 
 
 
