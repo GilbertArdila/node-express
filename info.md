@@ -5,6 +5,10 @@
 ## run commands
  - npm run dev
  - npm run start
+ - npm run migrations:generate migrationName  crea una migración
+ - npm run migrations:run   genera el archivo de la migración
+ - npm run migrations:revert   revierte la última migración hecha
+ - npm run migrations:delete  borra todas las migraciones hechas, inicia todo de cero
 
 ## run commands to up the docker service
 - first you must open docker desktop
@@ -56,6 +60,9 @@
 ## Instaling MySQL 
 - npm i --save mysql2   to change db
 
+## Instaling sequelize cli 
+- npm install sequelize-cli  --save-dev  to do migrations
+
 
 
 ### RESTful API
@@ -94,6 +101,10 @@
 - config/config.js
 - env/en.example
 - libs/sequelize
+- sequelizerc
+- db/models
+- db/seeders
+- db/config.js
 - db/models/index.js
 - db/models/models
 - schemas
