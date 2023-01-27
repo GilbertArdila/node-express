@@ -89,6 +89,8 @@
 - config/config.js
 - env/en.example
 - libs/sequelize
+- db/models/index.js
+- db/models/models
 - schemas
 - middlewares
 - services
