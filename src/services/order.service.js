@@ -10,6 +10,7 @@ class OrderService {
     return newOrder;
   }
 
+
   async find() {
     const orders = await models.Order.findAll();
     return orders;
@@ -22,7 +23,8 @@ class OrderService {
       include: [{
         association:'customer',
         include:['user']
-      }]
+        //incluimos lis items de esa orden
+      },'items']
     });
     if(!order){
       throw boom.notFound('order not found, please check the id');
@@ -43,6 +45,13 @@ class OrderService {
 
     return { id };
   }
+
+    //create para items
+    async addItem(data) {
+      const newItem = await models.OrderProduct.create(data)
+      return newItem;
+    }
+
 
 }
 

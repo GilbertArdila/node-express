@@ -1,7 +1,7 @@
 const express = require('express');
 const OrdersService = require('../services/order.service');
 const validatorHandler = require('../middlewares/validator.handler');
-const {createOrderSchema, updateOrderSchema, getOrderSchema,deleteOrderSchema} = require('../schemas-DTO/order.dto');
+const {createOrderSchema, updateOrderSchema, getOrderSchema,deleteOrderSchema,addItemSchema} = require('../schemas-DTO/order.dto');
 
 //creamos la estancia de Router
 const router = express.Router();
@@ -71,6 +71,21 @@ router.delete('/:id',
     }
   }
 );
+
+//post para agregar items a la orden
+router.post('/add-item',
+  validatorHandler(addItemSchema, 'body'),
+  async (req, res, next) => {
+    try {
+      const body = req.body;
+      const newItem = await service.addItem(body);
+      res.status(201).json(newItem);
+    } catch (error) {
+      next(error);
+    }
+  }
+);
+
 
 
 module.exports = router;
