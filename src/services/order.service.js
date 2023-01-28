@@ -11,6 +11,8 @@ class OrderService {
   }
 
 
+
+  //hacemos está anidación para evitar un error al buscar todas las ordenes
   async find() {
     const orders = await models.Order.findAll({
       include: [
@@ -40,14 +42,20 @@ class OrderService {
   }
 
   async update(id, changes) {
-    const order = this.findOne(id);
+    const order = await models.Order.findByPk(id);
+    if(!order){
+      throw boom.notFound('order not found, please check the id');
+    }
     const response = await order.update(changes)
     return response
 
   }
 
   async delete(id) {
-    const order =  this.findOne(id);
+    const order = await models.Order.findByPk(id);
+    if(!order){
+      throw boom.notFound('order not found, please check the id');
+    }
      await order.destroy(order);
 
     return { id };

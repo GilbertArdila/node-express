@@ -30,14 +30,21 @@ class UserService {
   }
 
   async update(id, changes) {
-    const user = this.findOne(id);
-    const response = await user.update(changes)
-    return response
+
+    const user = await models.User.findByPk(id);
+    if(!user){
+      throw boom.notFound('User not found, please check the id');
+    }
+    const response = await user.update(changes);
+    return response;
 
   }
 
   async delete(id) {
-    const user =  this.findOne(id);
+    const user = await models.User.findByPk(id);
+    if(!user){
+      throw boom.notFound('User not found, please check the id');
+    }
      await user.destroy(user);
 
     return { id };

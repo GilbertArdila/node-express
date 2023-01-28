@@ -33,13 +33,19 @@ class CategoryService {
   }
 
   async update(id, changes) {
-    const category = this.findOne(id);
+    const category = await models.Category.findByPk(id);
+    if (!category) {
+      throw boom.notFound('category not found, please check the id');
+    }
     const response = await category.update(changes);
     return response;
   }
 
   async delete(id) {
-    const category = this.findOne(id);
+    const category = await models.Category.findByPk(id);
+    if (!category) {
+      throw boom.notFound('category not found, please check the id');
+    }
     await category.destroy(category);
 
     return { id };
