@@ -1,16 +1,16 @@
 const Joi = require('joi');
 
 const id = Joi.number().integer();
-const id_customer = Joi.number().integer();
+const customerId = Joi.number().integer();
 const dispactched = Joi.boolean();
 
 const createOrderSchema = Joi.object({
-  id_customer: id_customer.required(),
-  dispactched: dispactched.required()
+  customerId: customerId.required(),
+  dispactched: dispactched
 });
 
 const updateOrderSchema = Joi.object({
-  id_customer: id_customer,
+  customerId: customerId,
   dispactched: dispactched
 });
 

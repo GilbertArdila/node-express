@@ -17,7 +17,13 @@ class OrderService {
   }
 
   async findOne(id) {
-    const order = await models.Order.findByPk(id);
+    //anidamos los datos del cliente y a la vez nos traemos los datos de usuario de ese cliente
+    const order = await models.Order.findByPk(id,{
+      include: [{
+        association:'customer',
+        include:['user']
+      }]
+    });
     if(!order){
       throw boom.notFound('order not found, please check the id');
     }

@@ -13,7 +13,7 @@ class CustomerService {
   }
 
   async find() {
-    //usamos el alias user de user.model para anidar la asociación entre tablas
+    //usamos el alias user del associate en  user.model para anidar la asociación entre tablas
     const customers = await models.Customer.findAll({
       include:['user']
     });
