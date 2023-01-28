@@ -12,9 +12,16 @@ class OrderService {
 
 
   async find() {
-    const orders = await models.Order.findAll();
-    return orders;
-
+    const orders = await models.Order.findAll({
+      include: [
+        {
+          association: 'customer',
+          include: ['user']
+        },
+        'items'
+      ]
+    })
+    return orders
   }
 
   async findOne(id) {
