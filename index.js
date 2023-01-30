@@ -1,16 +1,14 @@
 const express = require('express');
 const routerApi = require('./src/routes');
+const {checkApiKey} = require('./src/middlewares/auth.handler');
 const {logErrors,errorHandler,boomErrorHandler,ormErrorHandler} = require('./src/middlewares/error.handler');
 const cors = require('cors');
 
 const app = express();
 const port =process.env.PORT || 3000;
 app.use(express.json());
-routerApi(app);
-app.use(logErrors);
-app.use(ormErrorHandler);
-app.use(boomErrorHandler);
-app.use(errorHandler);
+
+
 
 //cors
 const whiteList = ['http://localhost:8080','https://myApp.com'];
@@ -25,10 +23,11 @@ const options = {
 };
 app.use(cors(options));
 
+//llamamos el index del auth
+require('./src/utils/auth');
 
-app.listen(port, () => {
-  console.log(`using the port: ${port}`);
-});
+
+
 
 app.get('/',(req,res) => {
   res.send('Mi primer servido con Node.js y Platzi!!  :)')
@@ -59,4 +58,19 @@ app.get('/people', (req, res) => {
   }else{
     res.send('No has enviado parámetros')
   }
+});
+
+//probando ,checkApiKey
+app.get('/nueva-ruta',checkApiKey,(req,res) => {
+  res.send('Hola sí pudiste entrar a esta ruta, estas autorizado')
+})
+
+routerApi(app);
+app.use(logErrors);
+app.use(ormErrorHandler);
+app.use(boomErrorHandler);
+app.use(errorHandler);
+
+app.listen(port, () => {
+  console.log(`using the port: ${port}`);
 });

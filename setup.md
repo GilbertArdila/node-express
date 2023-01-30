@@ -41,6 +41,14 @@
 ## Instaling sequelize cli 
 - npm install sequelize-cli  --save-dev  to do migrations
 
+## Installing bcrypt
+- npm install bcrypt
+
+## Installing passportJs
+- npm install passport
+
+## Instaling passport-local
+npm install passport-local
 
 
 

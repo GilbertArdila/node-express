@@ -16,6 +16,7 @@ module.exports = {
      await queryInterface.createTable(CATEGORY_TABLE,CategorySchema);
      await queryInterface.createTable(PRODUCT_TABLE,ProductSchema);
      await queryInterface.createTable(CUSTOMER_TABLE,CustomerSchema);
+     //to avoid the virtual data type error unlink the schema in orders
      await queryInterface.createTable(ORDER_TABLE, {
       id: {
         allowNull: false,

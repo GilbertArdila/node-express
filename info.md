@@ -73,6 +73,8 @@
 - routes
 - index (routes)
 - index (main app)
+- utils/auth/index.js
+- utils/auth/strategies
 
 
 ### according to db relationships
