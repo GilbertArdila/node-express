@@ -3,9 +3,9 @@ const {UserSchema,USER_TABLE} = require('./../models/user.model.js');
 const {CategorySchema,CATEGORY_TABLE} = require('./../models/category.model.js');
 const {ProductSchema,PRODUCT_TABLE} = require('./../models/product.model.js');
 const {CUSTOMER_TABLE,CustomerSchema} = require('./../models/customer.model');
-const {OrderSchema,ORDER_TABLE} = require('./../models/order.model');
+const {ORDER_TABLE,} = require('./../models/order.model');
 const {OrderProductSchema,ORDER_PRODUCT_TABLE} = require('./../models/order-product.model');
-
+const {Sequelize,DataTypes} = require('sequelize');
 
 
 
@@ -16,7 +16,36 @@ module.exports = {
      await queryInterface.createTable(CATEGORY_TABLE,CategorySchema);
      await queryInterface.createTable(PRODUCT_TABLE,ProductSchema);
      await queryInterface.createTable(CUSTOMER_TABLE,CustomerSchema);
-     await queryInterface.createTable(ORDER_TABLE,OrderSchema);
+     await queryInterface.createTable(ORDER_TABLE, {
+      id: {
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+        type: Sequelize.DataTypes.INTEGER
+      },
+      customerId: {
+        field: 'customer_id',
+        allowNull: false,
+        type: Sequelize.DataTypes.INTEGER,
+        references: {
+          model: CUSTOMER_TABLE,
+          key: 'id'
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'SET NULL'
+      },
+      dispactched:{
+        allowNull: false,
+        type: DataTypes.BOOLEAN,
+        defaultValue: false
+      },
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DataTypes.DATE,
+        field: 'created_at',
+        defaultValue: Sequelize.NOW,
+      },
+    });
      await queryInterface.createTable(ORDER_PRODUCT_TABLE,OrderProductSchema);
 
 
