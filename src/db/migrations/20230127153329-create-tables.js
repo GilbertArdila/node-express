@@ -3,6 +3,10 @@ const {UserSchema,USER_TABLE} = require('./../models/user.model.js');
 const {CategorySchema,CATEGORY_TABLE} = require('./../models/category.model.js');
 const {ProductSchema,PRODUCT_TABLE} = require('./../models/product.model.js');
 const {CUSTOMER_TABLE,CustomerSchema} = require('./../models/customer.model');
+const {OrderSchema,ORDER_TABLE} = require('./../models/order.model');
+const {OrderProductSchema,ORDER_PRODUCT_TABLE} = require('./../models/order-product.model');
+
+
 
 
 /** @type {import('sequelize-cli').Migration} */
@@ -12,6 +16,10 @@ module.exports = {
      await queryInterface.createTable(CATEGORY_TABLE,CategorySchema);
      await queryInterface.createTable(PRODUCT_TABLE,ProductSchema);
      await queryInterface.createTable(CUSTOMER_TABLE,CustomerSchema);
+     await queryInterface.createTable(ORDER_TABLE,OrderSchema);
+     await queryInterface.createTable(ORDER_PRODUCT_TABLE,OrderProductSchema);
+
+
 
   },
 
@@ -21,6 +29,10 @@ module.exports = {
     await queryInterface.dropTable(CATEGORY_TABLE);
     await queryInterface.dropTable(PRODUCT_TABLE);
     await queryInterface.dropTable(CUSTOMER_TABLE);
+    await queryInterface.dropTable(ORDER_TABLE);
+    await queryInterface.dropTable(ORDER_PRODUCT_TABLE);
+
+
 
   }
 };
