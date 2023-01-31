@@ -19,7 +19,7 @@ router.post(
         sub: user.id,
         role: user.role
       };
-      //creamos un token
+      //creamos un token esto y el payload es la firma del token
       const token = jwt.sign(payload,config.jwtSecret)
       //retornamos el usuario y el token
       res.json({

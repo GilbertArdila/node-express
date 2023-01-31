@@ -1,5 +1,6 @@
 const express = require('express');
 const passport = require('passport');
+const  {checkRoles} = require('./../middlewares/auth.handler');
 
 const CategoryService = require('./../services/category.service');
 const validatorHandler = require('./../middlewares/validator.handler');
@@ -40,10 +41,11 @@ router.get(
   }
 );
 
-router.post(
-  '/',
-  //si tiene token puede crear categorias
+router.post('/',
+  //si tiene token puede pasamos a checkear el rol para dar permisos
   passport.authenticate('jwt', { session: false }),
+  //le envio los roles que pueden ingresar 'admin','customers'
+  checkRoles('admin'),
   validatorHandler(createCategorySchema, 'body'),
   async (req, res, next) => {
     try {

@@ -61,6 +61,8 @@
 - config/config.js
 - env/en.example
 - libs/sequelize
+- libs/postgres  only for practices
+- libs/postgresPool  only for practices
 - sequelizerc
 - db/models
 - db/seeders
@@ -73,7 +75,9 @@
 - token-verify.js   only for practices
 - schemas
 - middlewares
-- middlewares/auth.handler   only for practices
+- middlewares/error.handler 
+- middlewares/validator.handler 
+- middlewares/auth.handler   
 - services
 - routes
 - index (routes)
