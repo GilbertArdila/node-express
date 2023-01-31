@@ -61,6 +61,19 @@ class OrderService {
     return { id };
   }
 
+  //creamos endpoint para buscar las ordenes de un usuario
+  async findByUser(userId){
+    const orders = await models.Order.findAll({
+      where:{
+        '$customer.user.id$': userId
+      },
+      include:[{
+        association: 'customer',
+        include:['user']
+      }]
+    });
+    return orders
+  }
     //create para items
     async addItem(data) {
       const newItem = await models.OrderProduct.create(data)
