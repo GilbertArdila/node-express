@@ -67,6 +67,10 @@
 - db/config.js
 - db/models/index.js
 - db/models/models
+- utils/auth/index.js
+- utils/auth/strategies
+- token-sing.js    only for practices
+- token-verify.js   only for practices
 - schemas
 - middlewares
 - middlewares/auth.handler   only for practices
@@ -74,10 +78,7 @@
 - routes
 - index (routes)
 - index (main app)
-- utils/auth/index.js
-- utils/auth/strategies
-- token-sing.js    only for practices
-- token-verify.js   only for practices
+
 
 
 ### according to db relationships

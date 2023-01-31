@@ -50,6 +50,9 @@
 ## Instaling passport-local
 npm install passport-local
 
+## Instaling passport-jwt
+npm install passport-jwt
+
 ## Instaling jsonwebtoken
 npm install jsonwebtoken
 
