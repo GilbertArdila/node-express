@@ -6,8 +6,6 @@ class CustomerService {
   constructor() {}
 
   async create(data) {
-
-
     //encriptamos el password del user
     const hash = await bcrypt.hash(data.user.password,10);
     //cambiamos el password del usuario por el hash
@@ -17,15 +15,13 @@ class CustomerService {
         ...data.user,
         password:hash
       }
-    }
-
+    };
     //creamos el usuario en el mismo endpoint del customer usando la asociación y el alias del customer.model
     const newCustomer = await models.Customer.create(newData,{
      include:['user']
     })
     //no retornamos el password en la respuesta
     delete newCustomer.user.dataValues.password;
-
     return newCustomer;
   }
 

@@ -23,7 +23,7 @@ const options = {
 };
 app.use(cors(options));
 
-//llamamos el index del auth
+//llamamos el index del auth para ejecutar la estrategia de autenticación
 require('./src/utils/auth');
 
 

@@ -69,12 +69,15 @@
 - db/models/models
 - schemas
 - middlewares
+- middlewares/auth.handler   only for practices
 - services
 - routes
 - index (routes)
 - index (main app)
 - utils/auth/index.js
 - utils/auth/strategies
+- token-sing.js    only for practices
+- token-verify.js   only for practices
 
 
 ### according to db relationships

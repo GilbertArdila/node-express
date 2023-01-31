@@ -31,6 +31,7 @@ class UserService {
 
   //buscar por email
   async findByEmail(email) {
+    //el email es unique, solo hay uno en la db
     const response = await models.User.findOne({
       where:{email}
     });
