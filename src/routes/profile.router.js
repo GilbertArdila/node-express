@@ -10,7 +10,7 @@ router.get('/my-orders',
   async (req, res, next) => {
     try {
       const user = req.user;
-      //este es el sub que definimos en el
+      //este es el sub que definimos en el auth.router
       const orders = await service.findByUser(user.sub);
       res.json(orders)
     } catch (error) {

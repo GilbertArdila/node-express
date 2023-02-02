@@ -56,6 +56,9 @@ npm install passport-jwt
 ## Instaling jsonwebtoken
 npm install jsonwebtoken
 
+## Instaling nodemailer
+npm install nodemailer
+
 
 
 

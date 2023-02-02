@@ -60,10 +60,7 @@ app.get('/people', (req, res) => {
   }
 });
 
-//probando ,checkApiKey
-app.get('/nueva-ruta',checkApiKey,(req,res) => {
-  res.send('Hola sí pudiste entrar a esta ruta, estas autorizado')
-})
+
 
 routerApi(app);
 app.use(logErrors);
