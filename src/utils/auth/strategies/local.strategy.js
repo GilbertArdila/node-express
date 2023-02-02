@@ -1,9 +1,9 @@
 const { Strategy } = require('passport-local');
-const UserService = require('./../../../services/user.service');
+const AuthService = require('./../../../services/auth.service');
 const boom = require('@hapi/boom');
 const bcrypt = require('bcrypt');
 
-const service = new UserService();
+const service = new AuthService();
 
 const localStrategy = new Strategy(
   {
@@ -15,21 +15,7 @@ const localStrategy = new Strategy(
   async (email, password, done) => {
     //verificamos cualquier error que se pueda producir con el try catch
     try {
-      //buscamos el usuario por email
-      const user = await service.findByEmail(email);
-      //si el usuario no existe enviamos el error
-      if (!user) {
-        done(boom.unauthorized(), false);
-      }
-      //verificamos el password
-      const isMatch = await bcrypt.compare(password, user.password);
-      //si el password no existe enviamos el error
-      if (!isMatch) {
-        done(boom.unauthorized(), false);
-      }
-      //no retornamos el password
-      delete user.dataValues.password;
-      //si hay usuario y el password corresponde enviamos los datos del usuario
+      const user = await service.getUser(email,password)
       done(null, user);
     } catch (error) {
       done(error, false);

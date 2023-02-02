@@ -82,6 +82,7 @@
 - routes
 - index (routes)
 - index (main app)
+- mailer.js
 
 
 
