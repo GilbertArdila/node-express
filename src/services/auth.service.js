@@ -42,14 +42,32 @@ class AuthService{
       token
     };
   }
-
-  //servicio para enviar email de recuperación de contraseña
-  async sendMail(email){
+  async recoveryPassword(email){
     const user = await service.findByEmail(email);
     //si el usuario no existe enviamos el error
     if (!user) {
       throw(boom.unauthorized());
+    };
+    const payload = {sub : user.id};
+    const token = jwt.sign(payload,config.jwtSecret,{expiresIn: '15min'});
+    //debería ser la url con el endpoint de recuperación del frontend
+    const link = `http://myfrontendurl/recovery?token=${token}`;
+    //actualizamos el token de la bd
+    await service.update(user.id,{recoveryToken:token});
+    const mail = {
+      from: config.mailAdress , // sender address
+      to: `${user.email}`, // list of receivers
+      subject: "Recovery password link", // Subject line
+      //text: "please follow the link below to recover your password", // plain text body
+      html: `<p>please follow this <a>${link}</a> to recover your password</p>`, // html body
     }
+    const response = await this.sendMail(mail);
+    return response;
+  }
+
+  //servicio para enviar email de recuperación de contraseña
+  async sendMail(infoMail){
+
     const transporter = nodemailer.createTransport({
       host: "smtp.gmail.com",
       secure: true, // true for 465, false for other ports
@@ -60,15 +78,10 @@ class AuthService{
       }
     });
 
-    await transporter.sendMail({
-      from: config.mailAdress , // sender address
-      to: `${user.email}`, // list of receivers
-      subject: "Hello this is a proobe mail ✔", // Subject line
-      text: "Hello world from nodejs", // plain text body
-      html: "<h1>Hello world</h1><br/><p>from nodejs</p>", // html body
-    });
+    await transporter.sendMail(infoMail);
     return {message:'mail sent'}
   }
+
 
 }
 module.exports = AuthService;

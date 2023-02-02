@@ -29,7 +29,7 @@ router.post(
       //obtenemos el usuario logeado
       //este es el usuario que nos envia local.strategy
       const {email} = req.body;
-      const response = await service.sendMail(email);
+      const response = await service.recoveryPassword(email);
       res.json(response);
 
     } catch (error) {

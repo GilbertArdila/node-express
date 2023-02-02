@@ -29,6 +29,12 @@ const UserSchema = {
     type: DataTypes.DATE,
     field: 'created_at',
     defaultValue: Sequelize.NOW
+  },
+  recoveryToken:{
+    //por defecto no recupera la contraseña, solo cuando la necesite recuperar
+    allowNull: true,
+    type: DataTypes.STRING,
+    field: 'recovery_token'
   }
 };
 
