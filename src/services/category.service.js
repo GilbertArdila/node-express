@@ -29,7 +29,7 @@ class CategoryService {
     if (!category) {
       throw boom.notFound('category not found, please check the id');
     }
-    return { category };
+    return  category ;
   }
 
   async update(id, changes) {
@@ -48,7 +48,7 @@ class CategoryService {
     }
     await category.destroy(category);
 
-    return { id };
+    return  id ;
   }
 }
 

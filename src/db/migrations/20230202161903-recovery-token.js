@@ -6,17 +6,17 @@ const { DataTypes} = require('sequelize');
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface) {
-    await queryInterface.addColumn(USER_TABLE,'recovery_token',
-    {
-      allowNull: true,
-    type: DataTypes.STRING,
-    field: 'recovery_token'
-    });
+    // await queryInterface.addColumn(USER_TABLE,'recovery_token',
+    // {
+    //   allowNull: true,
+    // type: DataTypes.STRING,
+    // field: 'recovery_token'
+    // });
 
   },
 
   async down (queryInterface) {
-    await queryInterface.removeColumn(USER_TABLE,'recovery_token');
+    //await queryInterface.removeColumn(USER_TABLE,'recovery_token');
 
   }
 };

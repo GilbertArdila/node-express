@@ -45,7 +45,7 @@ class ProductService {
     if (!product) {
       throw boom.notFound('product not found, please check the id');
     }
-    return { product };
+    return product;
   }
 
   async update(id, changes) {
@@ -64,7 +64,7 @@ class ProductService {
     }
     await product.destroy(product);
 
-    return { id };
+    return id;
   }
 }
 

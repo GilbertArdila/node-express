@@ -38,7 +38,7 @@ class OrderService {
     if(!order){
       throw boom.notFound('order not found, please check the id');
     }
-    return { order };
+    return order;
   }
 
   async update(id, changes) {
@@ -58,7 +58,7 @@ class OrderService {
     }
      await order.destroy(order);
 
-    return { id };
+    return id ;
   }
 
   //creamos endpoint para buscar las ordenes de un usuario

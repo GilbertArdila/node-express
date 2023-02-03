@@ -39,7 +39,7 @@ class CustomerService {
     if(!customer){
       throw boom.notFound('customer not found, please check the id');
     }
-    return { customer };
+    return customer ;
   }
 
   async update(id, changes) {
@@ -59,7 +59,7 @@ class CustomerService {
     }
      await customer.destroy(customer);
 
-    return { id };
+    return  id ;
   }
 }
 
