@@ -5,6 +5,7 @@ const OrderService = require('../services/order.service')
 const router = express.Router();
 const service = new OrderService();
 
+//para poder ver las ordenes de ese cliente debe tener un token, se supone que ya está logueado
 router.get('/my-orders',
   passport.authenticate('jwt',{session: false}),
   async (req, res, next) => {

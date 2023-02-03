@@ -14,6 +14,8 @@ const {
 const router = express.Router();
 const service = new ProductService();
 
+//cualquier usuario puede ver los productos, pero solo usuarios con token pueden editar, crear y borrar
+
 router.get(
   '/',
   validatorHandler(queryProductSchema, 'query'),

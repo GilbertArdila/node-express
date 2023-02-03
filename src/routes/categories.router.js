@@ -14,6 +14,7 @@ const {
 const router = express.Router();
 const service = new CategoryService();
 
+//cualquier usuario puede ver las categorias, pero solo usuarios con token pueden editar, crear y borrar
 router.get(
   '/',
   validatorHandler(queryCategorySchema, 'query'),

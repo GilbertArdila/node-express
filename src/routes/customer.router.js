@@ -13,6 +13,8 @@ const {
 const router = express.Router();
 const service = new CustomerService();
 
+//cualquier usuario puede ver los clientes, pero solo usuarios con token pueden editar, crear y borrar
+
 router.get('/', async (req, res, next) => {
   try {
     const customers = await service.find();

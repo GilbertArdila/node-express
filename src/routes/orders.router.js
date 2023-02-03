@@ -9,7 +9,7 @@ const router = express.Router();
 //creamos una estancia de servicio
 const service = new OrdersService();
 
-
+//cualquier usuario puede ver las ordenes, pero solo usuarios con token pueden editar, crear y borrar
 router.get('/', async (req, res, next) => {
   try {
     const orders = await service.find();
@@ -78,6 +78,7 @@ router.delete('/:id',
 
 //post para agregar items a la orden
 router.post('/add-item',
+  passport.authenticate('jwt', { session: false }),
   validatorHandler(addItemSchema, 'body'),
   async (req, res, next) => {
     try {
