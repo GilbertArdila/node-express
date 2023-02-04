@@ -53,8 +53,7 @@ const OrderProductSchema = {
 
 class OrderProduct extends Model{
   static associate(models){
-    //uno a uno el customer tiene un user
-    //la FK debería estar en esta tabla es userId
+    //la orden tiene un usuario
     this.belongsTo(models.User,{as:'user'});
     //un cliente muchas ordenes de compra, ponemos la FK que está en order.model
     this.hasMany(models.Order,{

@@ -60,15 +60,15 @@
 - docker-compose
 - config/config.js
 - env/en.example
-- libs/sequelize
-- libs/postgres  only for practices
-- libs/postgresPool  only for practices
-- sequelizerc
 - db/models
 - db/seeders
 - db/config.js
 - db/models/index.js
 - db/models/models
+- libs/sequelize
+- libs/postgres  only for practices
+- libs/postgresPool  only for practices
+- sequelizerc
 - utils/auth/index.js
 - utils/auth/strategies
 - token-sing.js    only for practices

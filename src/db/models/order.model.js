@@ -51,7 +51,7 @@ class Order extends Model{
     this.belongsTo(models.Customer,{as:'customer'});
     //relación muchos a muchos order/product, la orden va a tener muchos productos
     this.belongsToMany(models.Product,{
-      //los productos de es orden los vamos a llamar items
+      //los productos de esa orden los vamos a llamar items
       as: 'items',
       //este es el modelName que le dimos a la tabla, esta es la tabla que va a resolver esa relación muchos a muchos, la tabla pivote
       through: models.OrderProduct,

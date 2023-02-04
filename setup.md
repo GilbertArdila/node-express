@@ -57,7 +57,7 @@ npm install passport-jwt
 npm install jsonwebtoken
 
 ## Instaling nodemailer
-npm install nodemailer
+npm install nodemailer  to send confirmation emails
 
 
 
